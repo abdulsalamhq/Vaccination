@@ -5,7 +5,7 @@ I Put This Module on a Demo Server You can access using this Url  https://bsite.
 # Vaccination
 Covid19 Vaccination Module
 
-First Setup  : Copy Past the Location Link with Country in Textbox or Select Country From Dropdown it will Dynamically Paste Url or Selected Country
+First Setup  :  Select Country From Dropdown it will Dynamically Paste Url or Selected Country
 
 Second Setup : Click on Download Button Module will Create a Folder in C:\ With the Name of "VacciantionFiles" and Save Downloaded in this Folder with the Name of Selected Country
 
