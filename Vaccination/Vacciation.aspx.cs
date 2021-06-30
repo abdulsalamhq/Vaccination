@@ -2,6 +2,7 @@
 using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -49,28 +50,21 @@ namespace Vaccination
             }
             string FileName = txtFileDownloadLink.Text;
 
+
             bool FilePath = File.Exists(root + @"\" + ddlLocation.SelectedItem.Text + ".csv");
             if (FilePath == false)
             {
                 if (!string.IsNullOrEmpty(FileName))
                 {
-                    if (txtFileDownloadLink.Text != lblLink.Text + ddlLocation.SelectedItem.Text + "csv")
+                    if (txtFileDownloadLink.Text != (lblLink.Text + ddlLocation.SelectedItem.Text + "csv"))
                     {
-
-
                         using (WebClient wc = new WebClient())
                         {
                             Uri uri = new Uri(txtFileDownloadLink.Text);
-
-
-
                             wc.DownloadFileAsync(uri, @"C:\VacciantionFiles\" + ddlLocation.Text + ".csv");
                             wc.DownloadProgressChanged += Wc_DownloadProgressChanged;
                             wc.DownloadFileCompleted += Client_DownloadFileCompleted;
-
                         }
-
-
                     }
                     else
                     {
@@ -92,6 +86,7 @@ namespace Vaccination
                 txtFileDownloadLink.Text = "";
                 btnDownloadDataFile.Enabled = false;
             }
+
         }
         //Process File Data
         protected void btnProcessDataFile_Click(object sender, EventArgs e)
@@ -148,7 +143,10 @@ namespace Vaccination
                     }
                     DateTime LastedDate = dt.Max(p => p);
                     DateTime StartDate = LastedDate.AddDays(-7);
-                    Date.Contains(StartDate.ToShortDateString());
+                    
+
+                    //var d= dt.FirstOrDefault(x => x.Date == StartDate);
+
                     for (int i = 0; i < TotalVaccinations.Count; i++)
                     {
                         lblTotalVaccination.InnerText = string.Join(",", TotalVaccinations);
