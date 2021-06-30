@@ -137,22 +137,54 @@ namespace Vaccination
                         PEmailDetail.Visible = true;
                     }
                     List<DateTime> dt = new List<DateTime>();
+
+
                     foreach (var item in Date)
                     {
                         dt.Add(Convert.ToDateTime(item));
+
                     }
                     DateTime LastedDate = dt.Max(p => p);
                     DateTime StartDate = LastedDate.AddDays(-7);
-                    
-
-                    //var d= dt.FirstOrDefault(x => x.Date == StartDate);
-
+                    List<int> Ll = new List<int>();
+                    int Index1;
+                    for (int i = 0; i < dt.Count; i++)
+                    {
+                        if (dt[i] > StartDate)
+                        {
+                            Ll.Add(Convert.ToInt32(TotalVaccinations[i]));
+                        }
+                        Index1 = i;
+                    }
+                    var Result = 0;
+                    var Result2 = 0 ;
+                    for (int i = 6; i <= Ll.Count; i--)
+                    {
+                        var FirstValue = Ll[i];
+                        i--;
+                        if (i == 0)
+                            break;
+                        for (int j = 0; j < i;)
+                        {
+                            var SecondValue = Ll[i];
+                            Result += FirstValue - SecondValue;
+                            break;
+                        }
+                        if (i == -1)
+                        {
+                            Result2 = FirstValue - Result;
+                            break;
+                        }
+                    }
+                    var FinalResult = Result2 / 7;
                     for (int i = 0; i < TotalVaccinations.Count; i++)
                     {
                         lblTotalVaccination.InnerText = string.Join(",", TotalVaccinations);
                         lblLastestDate.Text = LastedDate.Date.ToShortDateString();
-                        txtEmailBody.InnerText = "Latest date:- " + string.Join("", LastedDate.Date.ToShortDateString()) + Environment.NewLine + "Total Vaccinations:- " + string.Join(",", TotalVaccinations) + Environment.NewLine + "- Average number of vaccinations in the last 7 days:- ";
+                        lblAverageNumberVaccination.Text = FinalResult.ToString(); ;
+                        txtEmailBody.InnerText = "Latest date:- " + string.Join("", LastedDate.Date.ToShortDateString()) + Environment.NewLine + "Total Vaccinations:- " + string.Join(",", TotalVaccinations) + Environment.NewLine + "- Average number of vaccinations in the last 7 days:- " + FinalResult;
                     }
+
                 }
                 btnDownloadDataFile.Enabled = false;
                 lblMessage.Text = "";
