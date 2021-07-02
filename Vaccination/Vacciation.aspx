@@ -122,30 +122,28 @@
                             <tr>
                                 <td class="auto-style6"><b>To:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtTo" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtTo" runat="server" placeholder="faraz@sitealive.com" Width="593px"></asp:TextBox></td>
                                 <td>
                                     <asp:Label ID="lblEmail" runat="server" />faraz@sitealive.com</td>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>CC:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtCC" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtCC" runat="server" placeholder="sikander@sitealive.com" Width="593px"></asp:TextBox></td>
                                 <td>
                                     <asp:Label ID="Label1" runat="server" />sikander@sitealive.com</td>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>BCC:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtBCC" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtBCC" runat="server" placeholder="usman@sitealive.com" Width="593px"></asp:TextBox></td>
                                 <td>
                                     <asp:Label ID="Label2" runat="server" />usman@sitealive.com</td>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>Subject:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtSubject" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
-
-
+                                    <asp:TextBox ID="txtSubject" runat="server" placeholder="subject" Width="593px" Value="Vax stats"></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>Email Body</b></td>
