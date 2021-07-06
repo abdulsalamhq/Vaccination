@@ -141,7 +141,7 @@
                             <tr>
                                 <td class="auto-style6"><b>Subject:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtSubject" runat="server" placeholder="subject" Width="593px" Value="Vax stats"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtSubject" runat="server" placeholder="subject" Width="593px"></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>Email Body</b></td>
