@@ -119,14 +119,14 @@
                             <tr>
                                 <td class="auto-style6"><b>To:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtTo" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtTo" runat="server" placeholder="faraz@sitealive.com" Width="593px"></asp:TextBox></td>
                                 <td>
                                     <asp:LinkButton ID="lbtntoEmail" OnClick="lbtntoEmail_Click" Text="faraz@sitealive.com" runat="server">faraz@sitealive.com</asp:LinkButton></td>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>CC:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtCC" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtCC" runat="server" placeholder="sikander@sitealive.com" Width="593px"></asp:TextBox></td>
                                 <td>
 
                                     <asp:LinkButton ID="lbtnCC" OnClick="lbtnCC_Click" Text="sikander@sitealive.com" runat="server">sikander@sitealive.com</asp:LinkButton>
@@ -134,16 +134,14 @@
                             <tr>
                                 <td class="auto-style6"><b>BCC:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtBCC" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtBCC" runat="server" placeholder="usman@sitealive.com" Width="593px"></asp:TextBox></td>
                                 <td>
                                     <asp:LinkButton ID="lbtnBCC" OnClick="lbtnBCC_Click" Text="usman@sitealive.com" runat="server">usman@sitealive.com</asp:LinkButton>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>Subject:</b></td>
                                 <td>
-                                    <asp:TextBox ID="txtSubject" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
-
-
+                                    <asp:TextBox ID="txtSubject" runat="server" placeholder="subject" Width="593px" Value="Vax stats"></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>Email Body</b></td>
