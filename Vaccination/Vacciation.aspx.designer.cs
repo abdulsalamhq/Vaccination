@@ -147,7 +147,7 @@ namespace Vaccination
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea lblTotalVaccination;
+        protected global::System.Web.UI.WebControls.Label lblTotalVaccination;
 
         /// <summary>
         /// lblAverageNumberVaccination control.
@@ -157,6 +157,15 @@ namespace Vaccination
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAverageNumberVaccination;
+
+        /// <summary>
+        /// hdnEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnEmail;
 
         /// <summary>
         /// PEmailDetail control.
@@ -186,13 +195,13 @@ namespace Vaccination
         protected global::System.Web.UI.WebControls.TextBox txtTo;
 
         /// <summary>
-        /// lblEmail control.
+        /// lbtntoEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
+        protected global::System.Web.UI.WebControls.LinkButton lbtntoEmail;
 
         /// <summary>
         /// txtCC control.
@@ -204,13 +213,13 @@ namespace Vaccination
         protected global::System.Web.UI.WebControls.TextBox txtCC;
 
         /// <summary>
-        /// Label1 control.
+        /// lbtnCC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnCC;
 
         /// <summary>
         /// txtBCC control.
@@ -222,13 +231,13 @@ namespace Vaccination
         protected global::System.Web.UI.WebControls.TextBox txtBCC;
 
         /// <summary>
-        /// Label2 control.
+        /// lbtnBCC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnBCC;
 
         /// <summary>
         /// txtSubject control.

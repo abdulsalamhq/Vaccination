@@ -17,7 +17,6 @@ namespace Vaccination
     public partial class Vacciation : System.Web.UI.Page
     {
         public DateTime Date { get; set; }
-
         // On Page Load Loaction Bind
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -103,6 +102,16 @@ namespace Vaccination
                     List<string> TotalVaccinations = new List<string>();
                     List<string> PeopleVaccinated = new List<string>();
                     List<string> PeopleFullyVaccinated = new List<string>();
+                    List<DateTime> dt = new List<DateTime>();
+                    List<int> Ll = new List<int>();
+                    int Index1;
+                    var Result = 0;
+                    var Result2 = 0;
+                    string LastVacination = "";
+
+                    int CalculationAverage;
+
+
                     while (!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
@@ -136,8 +145,6 @@ namespace Vaccination
                         PVactionDetail.Visible = true;
                         PEmailDetail.Visible = true;
                     }
-                    List<DateTime> dt = new List<DateTime>();
-
 
                     foreach (var item in Date)
                     {
@@ -146,8 +153,7 @@ namespace Vaccination
                     }
                     DateTime LastedDate = dt.Max(p => p);
                     DateTime StartDate = LastedDate.AddDays(-7);
-                    List<int> Ll = new List<int>();
-                    int Index1;
+
                     for (int i = 0; i < dt.Count; i++)
                     {
                         if (dt[i] > StartDate)
@@ -156,8 +162,7 @@ namespace Vaccination
                         }
                         Index1 = i;
                     }
-                    var Result = 0;
-                    var Result2 = 0 ;
+
                     for (int i = 6; i <= Ll.Count; i--)
                     {
                         var FirstValue = Ll[i];
@@ -176,14 +181,32 @@ namespace Vaccination
                             break;
                         }
                     }
-                    var FinalResult = Result2 / 7;
+                    CalculationAverage = Result2 / 7;
+
                     for (int i = 0; i < TotalVaccinations.Count; i++)
                     {
-                        lblTotalVaccination.InnerText = string.Join(",", TotalVaccinations);
-                        lblLastestDate.Text = LastedDate.Date.ToShortDateString();
-                        lblAverageNumberVaccination.Text = FinalResult.ToString(); ;
-                        txtEmailBody.InnerText = "Latest date:- " + string.Join("", LastedDate.Date.ToShortDateString()) + Environment.NewLine + "Total Vaccinations:- " + string.Join(",", TotalVaccinations) + Environment.NewLine + "- Average number of vaccinations in the last 7 days:- " + FinalResult;
+                        LastVacination = TotalVaccinations[i];
                     }
+                    int ConvertVacinationValue = Convert.ToInt32(LastVacination);
+                    
+                    string Vaccination = string.Format("{0:#,#0.##}", ConvertVacinationValue);
+                    string LastestDate = LastedDate.ToString("yyyy-MM-dd");
+                    string AverageData = string.Format("{0:#,#0.##}", CalculationAverage);
+                    lblLastestDate.Text = LastestDate;
+                    lblTotalVaccination.Text = Vaccination;
+                    lblAverageNumberVaccination.Text = AverageData;
+                    txtEmailBody.InnerText = "Latest date:- " + LastestDate + "\n" + "Total Vaccinations:- " + Vaccination + "\n" +  "Average number of vaccinations in the last 7 days:- " + AverageData;
+                    hdnEmail.Value = "Latest date:- " + LastestDate  + "<br/>" + "Total Vaccinations:- " + Vaccination  + "<br/>" + "Average number of vaccinations in the last 7 days:- " + AverageData;
+
+
+
+                    //for (int i = 0; i < TotalVaccinations.Count; i++)
+                    //{
+                    //    lblTotalVaccination.InnerText = string.Join(",", TotalVaccinations);
+                    //    lblLastestDate.Text = LastedDate.ToString("yyyy-MM-dd");
+                    //    lblAverageNumberVaccination.Text = FinalResult.ToString(); ;
+                    //    txtEmailBody.InnerText = "Latest date:- " + string.Join("", LastedDate.Date.ToString("yyyyMMdd")) + Environment.NewLine + "Total Vaccinations:- " + string.Join(",", TotalVaccinations) + Environment.NewLine + "- Average number of vaccinations in the last 7 days:- " + FinalResult;
+                    //}
 
                 }
                 btnDownloadDataFile.Enabled = false;
@@ -209,14 +232,12 @@ namespace Vaccination
                 lblMessage.Text = "File Deleted Successfully";
                 btnDownloadDataFile.Enabled = true;
                 ddlLocation.SelectedIndex = -1;
-
             }
             else
             {
                 lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Vaccination file does not exist";
             }
-
         }
         //Email
         protected async void btnEmailReport_Click(object sender, EventArgs e)
@@ -235,14 +256,12 @@ namespace Vaccination
                             var FromEmail = new EmailAddress(txtFrom.Text, "");
                             string EmailBoday = "SampleTex";
                             string EmailSubject = txtSubject.Text;
-                            string EmailHtmlContent = txtEmailBody.InnerText;
+                            string EmailHtmlContent = hdnEmail.Value;
                             var Email = MailHelper.CreateSingleEmailToMultipleRecipients(FromEmail, ToEmails, EmailSubject, EmailBoday, EmailHtmlContent);
                             var Response = await client.SendEmailAsync(Email);
                             if (Response.IsSuccessStatusCode == true)
                             {
-
                                 ClearFields("Email Sent Sucessefuly");
-
                             }
                         }
                         else
@@ -307,7 +326,7 @@ namespace Vaccination
             btnDownloadDataFile.Enabled = true;
             lblLastestDate.Text = "";
             lblAverageNumberVaccination.Text = "";
-            lblTotalVaccination.InnerText = "";
+            lblTotalVaccination.Text = "";
             txtEmailBody.InnerText = "";
             txtTo.Text = "";
             txtBCC.Text = "";
@@ -326,6 +345,22 @@ namespace Vaccination
         {
             lblMessage.ForeColor = System.Drawing.Color.Green;
             lblMessage.Text = "Download Completed";
+        }
+
+        //To Email Binding
+        protected void lbtntoEmail_Click(object sender, EventArgs e)
+        {
+            txtTo.Text = lbtntoEmail.Text;
+        }
+        //CC Email Binding
+        protected void lbtnCC_Click(object sender, EventArgs e)
+        {
+            txtCC.Text = lbtnCC.Text;
+        }
+        //BCC Email Binding
+        protected void lbtnBCC_Click(object sender, EventArgs e)
+        {
+            txtBCC.Text = lbtnBCC.Text;
         }
     }
 }

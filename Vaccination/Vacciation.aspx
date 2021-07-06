@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Async="true" CodeBehind="Vacciation.aspx.cs" Inherits="Vaccination.Vacciation" %>
+﻿<%@ Page Language="C#" ValidateRequest="false" AutoEventWireup="true" Async="true" CodeBehind="Vacciation.aspx.cs" Inherits="Vaccination.Vacciation" %>
 
 
 <!DOCTYPE html>
@@ -20,10 +20,6 @@
         #PEmailDetail legend {
             color: blue;
             font-size: 25px
-        }
-
-        .auto-style1 {
-            width: 157px;
         }
     </style>
 </head>
@@ -55,7 +51,7 @@
                             <td>
                                 <asp:UpdateProgress ID="UpdateProgress1" AssociatedUpdatePanelID="UpdatePanel1" runat="server">
                                     <ProgressTemplate>
-                                        <div class="div1" >
+                                        <div class="div1">
                                             <asp:Image ID="Image1" Width="30px" ImageUrl="loader.gif" AlternateText="Processing" runat="server" />
                                         </div>
                                     </ProgressTemplate>
@@ -100,13 +96,14 @@
                             <tr>
                                 <td><b>Total Vaccination:</b></td>
                                 <td>
-                                    <textarea id="lblTotalVaccination" style="resize: none" cols="155" rows="3" runat="server"></textarea>
+                                    <asp:Label ID="lblTotalVaccination" runat="server" />
                                 </td>
                             </tr>
                             <tr>
                                 <td><b>Last 7 Days:</b></td>
                                 <td>
                                     <asp:Label ID="lblAverageNumberVaccination" runat="server" /></td>
+                                <td><asp:HiddenField ID="hdnEmail" runat="server" /> </td>
                             </tr>
                         </table>
 
@@ -124,21 +121,22 @@
                                 <td>
                                     <asp:TextBox ID="txtTo" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
                                 <td>
-                                    <asp:Label ID="lblEmail" runat="server" />faraz@sitealive.com</td>
+                                    <asp:LinkButton ID="lbtntoEmail" OnClick="lbtntoEmail_Click" Text="faraz@sitealive.com" runat="server">faraz@sitealive.com</asp:LinkButton></td>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>CC:</b></td>
                                 <td>
                                     <asp:TextBox ID="txtCC" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
                                 <td>
-                                    <asp:Label ID="Label1" runat="server" />sikander@sitealive.com</td>
+
+                                    <asp:LinkButton ID="lbtnCC" OnClick="lbtnCC_Click" Text="sikander@sitealive.com" runat="server">sikander@sitealive.com</asp:LinkButton>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>BCC:</b></td>
                                 <td>
                                     <asp:TextBox ID="txtBCC" runat="server" placeholder="xxx@domain.com" Width="593px"></asp:TextBox></td>
                                 <td>
-                                    <asp:Label ID="Label2" runat="server" />usman@sitealive.com</td>
+                                    <asp:LinkButton ID="lbtnBCC" OnClick="lbtnBCC_Click" Text="usman@sitealive.com" runat="server">usman@sitealive.com</asp:LinkButton>
                             </tr>
                             <tr>
                                 <td class="auto-style6"><b>Subject:</b></td>
@@ -150,7 +148,7 @@
                             <tr>
                                 <td class="auto-style6"><b>Email Body</b></td>
                                 <td>
-                                    <textarea id="txtEmailBody" style="resize: none" rows="10" readonly="readonly" cols="83" runat="server" class="auto-style5"></textarea>
+                                    <textarea id="txtEmailBody" style="resize: none" rows="10"  readonly="readonly" cols="83" runat="server" class="auto-style5"></textarea>
                                 </td>
                                 <td>
                                     <asp:Label ID="lblEmailInfo" runat="server" ForeColor="Orange" Text="Kindly Copy Paste the Email In Requiesd Field or Put Your Desired Valid Email Address" /></td>
@@ -161,15 +159,10 @@
                                     <asp:Button ID="btnEmailReport" runat="server" Text="Email Report" OnClick="btnEmailReport_Click" /></td>
                             </tr>
                         </table>
-
                     </asp:Panel>
                 </ContentTemplate>
-
             </asp:UpdatePanel>
         </asp:Panel>
-
-
-
     </form>
 </body>
 </html>
